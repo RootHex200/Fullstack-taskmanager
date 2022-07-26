@@ -177,7 +177,7 @@ class Addtodo_page extends HookConsumerWidget {
                 builder: (context, ref, child) {
                   category = ref.watch(categoryProvider);
                   return Column(children: [
-                    for (int i = 0; i <category.length; i++)
+                    for (int i = 1; i <category.length; i++)
                       category.length == 0
                           ? const Center(child: CircularProgressIndicator())
                           : ListTile(
@@ -219,7 +219,7 @@ class Addtodo_page extends HookConsumerWidget {
                               details: detailsController.text,
                               category: category[radioValue.value]);
 
-                          ref.read(todoProvider.notifier).addTodo(todo, ref);
+                          ref.read(todoProvider.notifier).addTodo(todo);
                         },
                         child: const Text(
                           'Create',

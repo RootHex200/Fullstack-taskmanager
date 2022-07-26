@@ -67,13 +67,13 @@ class ApiHandler extends Todo_repo {
   }
 
   @override
-  Future addTodo(AddTodo addTodo, WidgetRef ref) async {
+  Future addTodo(AddTodo addTodo) async {
     ///create
     await Dio()
         .post("${baseurl}/create", data: addTodo.toMap())
         .then((response) async {
       Fluttertoast.showToast(msg: "Todo add successfully");
-      ref.read(todoProvider.notifier).getTodo();
+      
     }).catchError((e) {
       Fluttertoast.showToast(
           msg: "Todo not added",
@@ -100,10 +100,14 @@ class ApiHandler extends Todo_repo {
   }
 
   @override
-  Future deleteTodo(String id, WidgetRef ref) async {
+  Future deleteTodo(String id,String presentcategory, WidgetRef ref) async {
     ///delete/
     await Dio().delete("${baseurl}/delete/${id}").then((value) {
-      ref.read(todoProvider.notifier).getTodo();
+      if(presentcategory=="ALL"){
+        ref.read(todoProvider.notifier).getTodo();
+      }else{
+        ref.read(todoProvider.notifier).getCategoryData(presentcategory);
+      }
 
       Fluttertoast.showToast(msg: 'Data delete successfully');
     }).catchError((e) {
@@ -116,7 +120,11 @@ class ApiHandler extends Todo_repo {
     await Dio()
         .patch("${baseurl}/update/${updataData.id}", data: updataData.toMap())
         .then((value) {
-      ref.read(todoProvider.notifier).getTodo();
+          if(updataData.present_category=="ALL"){
+                  ref.read(todoProvider.notifier).getTodo();
+          }else{
+                  ref.read(todoProvider.notifier).getCategoryData(updataData.present_category);
+          }
       Fluttertoast.showToast(msg: 'Data is updated');
     }).catchError((e) {
       Fluttertoast.showToast(msg: "try agin");

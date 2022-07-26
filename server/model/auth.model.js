@@ -15,7 +15,8 @@ const authschema=mongoose.Schema({
         required:true
     },
     category:{
-        type:Array,       
+        type:Array, 
+        default:"All"      
     }
 });
 

@@ -12,17 +12,18 @@ class TodoNotifier extends StateNotifier<List<GetTodo>> {
   var nameofcategory = "";
   TodoNotifier() : super([]);
 
-  Future addTodo(AddTodo addTodo, WidgetRef ref) async {
-    await ApiHandler().addTodo(addTodo, ref);
+  Future addTodo(AddTodo addTodo) async {
+    await ApiHandler().addTodo(addTodo);
   }
 
   Future getTodo() async {
+    nameofcategory = "ALL";
     final data = await ApiHandler().getAlltodo();
     state = data;
   }
 
-  Future deleteTodo(String id, WidgetRef ref) async {
-    await ApiHandler().deleteTodo(id, ref);
+  Future deleteTodo(String id,String presentcategory, WidgetRef ref) async {
+    await ApiHandler().deleteTodo(id,presentcategory, ref);
   }
 
   Future updateTodo(UpdataData updataData, WidgetRef ref) async {

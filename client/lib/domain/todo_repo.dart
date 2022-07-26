@@ -11,11 +11,11 @@ abstract class Todo_repo {
 
   Future checkuserlogin();
 
-  Future addTodo(AddTodo addTodo, WidgetRef ref);
+  Future addTodo(AddTodo addTodo);
 
   Future<List<GetTodo>> getAlltodo();
 
-  Future deleteTodo(String id, WidgetRef ref);
+  Future deleteTodo(String id,String presentcategory, WidgetRef ref);
 
   Future updateTodo(UpdataData updataData, WidgetRef ref);
 

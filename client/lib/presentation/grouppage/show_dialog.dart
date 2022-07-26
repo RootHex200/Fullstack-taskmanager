@@ -8,7 +8,12 @@ import '../../application/todoprovider/todo_provider.dart';
 class Show_dialog extends HookWidget {
   final String id;
   final WidgetRef ref;
-  const Show_dialog({Key? key, required this.id, required this.ref})
+  final String present_category;
+  const Show_dialog(
+      {Key? key,
+      required this.id,
+      required this.ref,
+      required this.present_category})
       : super(key: key);
 
   @override
@@ -50,7 +55,9 @@ class Show_dialog extends HookWidget {
                   id: id.toString(),
                   title: title.text.toString(),
                   details: details.text.toString(),
-                  category: category.text.toLowerCase());
+                  category: category.text.toLowerCase(),
+                  present_category: present_category
+                  );
               ref.read(todoProvider.notifier).updateTodo(update, ref);
               Navigator.of(context).pop();
             },

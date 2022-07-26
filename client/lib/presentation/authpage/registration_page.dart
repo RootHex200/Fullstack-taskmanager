@@ -130,7 +130,7 @@ class Registration_page extends HookWidget {
                         ),
                         decoration: InputDecoration(
                             prefixIcon:
-                                const Icon(Icons.mark_email_unread_outlined),
+                                const Icon(Icons.password),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
                                 borderSide: const BorderSide(

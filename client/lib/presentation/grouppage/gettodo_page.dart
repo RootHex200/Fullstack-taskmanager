@@ -21,13 +21,18 @@ class Getodo_page extends StatelessWidget {
             margin: const EdgeInsets.only(left: 20, right: 20, top: 50),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Icon(
-                  Icons.arrow_back,
-                  size: 30,
-                  color: Colors.white,
+              children: [
+                InkWell(
+                  onTap: () {
+                    context.go("/home");
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    size: 30,
+                    color: Colors.white,
+                  ),
                 ),
-                Icon(
+                const Icon(
                   Icons.more_vert,
                   size: 30,
                   color: Colors.white,
@@ -49,7 +54,7 @@ class Getodo_page extends StatelessWidget {
             height: 10,
           ),
           Padding(
-              padding:const  EdgeInsets.only(left: 30),
+              padding: const EdgeInsets.only(left: 30),
               child: Consumer(
                 builder: (context, ref, child) {
                   final data = ref.read(todoProvider.notifier).nameofcategory;
@@ -69,7 +74,7 @@ class Getodo_page extends StatelessWidget {
                   final data = ref.watch(todoProvider);
                   return Text(
                     '${data.length} Task',
-                    style: TextStyle(color: Colors.white54, fontSize: 20),
+                    style: const TextStyle(color: Colors.white54, fontSize: 20),
                   );
                 },
               )),
@@ -136,6 +141,11 @@ class Getodo_page extends StatelessWidget {
                                                       gettododata[index]
                                                           .sId
                                                           .toString(),
+                                                      ref
+                                                          .read(todoProvider
+                                                              .notifier)
+                                                          .nameofcategory
+                                                          .toString(),
                                                       ref);
                                             },
                                             child: Container(
@@ -166,11 +176,14 @@ class Getodo_page extends StatelessWidget {
                                                   context: context,
                                                   builder: (context) {
                                                     return Show_dialog(
-                                                      id: gettododata[index]
-                                                          .sId
-                                                          .toString(),
-                                                      ref: ref,
-                                                    );
+                                                        id: gettododata[index]
+                                                            .sId
+                                                            .toString(),
+                                                        ref: ref,
+                                                        present_category: ref
+                                                            .read(todoProvider
+                                                                .notifier)
+                                                            .nameofcategory);
                                                   });
                                             },
                                             child: Container(

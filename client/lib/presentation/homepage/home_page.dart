@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/application/todoprovider/category_provider.dart';
 import 'package:todo_app/application/todoprovider/todo_provider.dart';
 
@@ -28,14 +29,31 @@ class Home_page extends HookConsumerWidget {
           const SizedBox(
             height: 20,
           ),
-          const Padding(
+          Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                "Lists",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    fontFamily: "kanit"),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Lists",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        fontFamily: "kanit"),
+                  ),
+                  InkWell(
+                      onTap: () async {
+                        final id = await SharedPreferences.getInstance();
+                        await id.remove("id");
+                        Future.delayed(Duration(microseconds: 10), () {
+                          context.go("/");
+                        });
+                      },
+                      child: const Icon(
+                        Icons.logout,
+                        size: 30,
+                      ))
+                ],
               )),
           Expanded(child: Consumer(
             builder: (context, ref, child) {
@@ -52,8 +70,15 @@ class Home_page extends HookConsumerWidget {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                            ref.read(todoProvider.notifier).getCategoryData(data[index]);
-                            context.go("/category-todo");
+                            if (index == 0 && data[index].toString() == "All") {
+                              ref.read(todoProvider.notifier).getTodo();
+                              context.go("/category-todo");
+                            } else {
+                              ref
+                                  .read(todoProvider.notifier)
+                                  .getCategoryData(data[index]);
+                              context.go("/category-todo");
+                            }
                           },
                           child: Container(
                             margin: const EdgeInsets.only(left: 10, right: 10),
@@ -116,7 +141,7 @@ class Home_page extends HookConsumerWidget {
             size: 30,
           ),
           onPressed: () {
-            
+            context.go("/addtodo");
           }),
     );
   }

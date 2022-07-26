@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_app/application/authprovider/auth_provider.dart';
 import 'package:todo_app/domain/userdata/auth_data.dart';
 import 'package:todo_app/infrastructure/api/api_handler.dart';
@@ -15,15 +16,17 @@ class Login_page extends HookWidget {
     final formKey = GlobalKey<FormState>();
     final emailController = useTextEditingController();
     final paswordController = useTextEditingController();
-          check_user() async {
-        final data = await ApiHandler().checkuserlogin();
-        if (data != null) {
-          context.go("/home");
-        }
+    check_user() async {
+      final data = await ApiHandler().checkuserlogin();
+      print(data.runtimeType);
+      if (data != null) {
+        context.go("/home");
       }
+    }
+
     useEffect(() {
       check_user();
-    });
+    }, []);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -32,9 +35,7 @@ class Login_page extends HookWidget {
               margin: const EdgeInsets.only(top: 50),
               child: Center(
                   child: InkWell(
-                onTap: () async {
-                  
-                },
+                onTap: () async {},
                 child: const Text(
                   "SIGN IN",
                   style: TextStyle(
