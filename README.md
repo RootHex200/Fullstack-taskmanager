@@ -87,6 +87,7 @@ Features and Plugins I've used:
    - Eqatable
    - Riverpod
    - Flutter hook
+   - shared_preferences 
    
 * Demo video link: https://drive.google.com/file/d/10RutDfoxPI5QpkkB2lZAibDk4fFwOJJO/view?usp=sharing
 #### Backend Technology  
