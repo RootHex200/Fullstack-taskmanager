@@ -87,6 +87,8 @@ Features and Plugins I've used:
    - Eqatable
    - Riverpod
    - Flutter hook
+   
+* Demo video link: https://drive.google.com/file/d/10RutDfoxPI5QpkkB2lZAibDk4fFwOJJO/view?usp=sharing
 #### Backend Technology  
 * [Node js](https://nodejs.org/en/) 
 * [Express js](https://expressjs.com/)
