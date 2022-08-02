@@ -37,18 +37,6 @@
         <li><a href="#features-with-snapshots">Features with Snapshots</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
-    </li>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-    <li>
-      <a href="#installation">Installation</a>
-      <ul>
-        <li><a href="#frontend">Frontend</a></li>
-        <li><a href="#backend">Backend</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#setup_run">Setup & Run</a>
-    </li>
     <li><a href="#roadmap">Roadmap</a></li>
    
   </ol>
@@ -59,7 +47,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-<img src="Screenshots/F1.png">
+<img src="https://github.com/RootHex200/RootHex200/blob/main/screen_3.png" width="200" height="400"><img src="https://github.com/RootHex200/RootHex200/blob/main/screen_2.png" width="200" height="400"><img src="https://github.com/RootHex200/RootHex200/blob/main/screen_1.png" width="200" height="400">
 </div><br>
 Task Manager is android version app that save task and help to complete work easily.The app was made with Flutter as a Frontend Technology and Node js as a Backend Technology.This app help those people who complete daily or weekly task step by step.
 
