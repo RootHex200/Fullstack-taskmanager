@@ -80,8 +80,13 @@ Task Manager is android version app that save task and help to complete work eas
    </details>
 ## Built With 
 #### Frontend Technology  
-* [Flutter](https://flutter.dev/?gclsrc=ds&gclsrc=ds)
-
+* [Flutter](https://flutter.dev/?gclsrc=ds&gclsrc=ds) <br>
+Features and Plugins I've used: 
+   - Dio
+   - Domain driven design
+   - Eqatable
+   - Riverpod
+   - Flutter hook
 #### Backend Technology  
 * [Node js](https://nodejs.org/en/) 
 * [Express js](https://expressjs.com/)
